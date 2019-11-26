@@ -1,0 +1,125 @@
+.body {
+  margin-top: 100px;
+  margin-left: -380px;
+}
+
+.round {
+  position: relative;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  border: 130px solid rgba(0, 0, 0, 0.83);
+  background-color: transparent;
+  box-shadow: 0 0 0 7px limegreen;
+}
+
+.round2 {
+  position: relative;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  border: 0;
+  background-color: transparent;
+  box-shadow: 0 0 0 7px limegreen;
+}
+
+.icon {
+  position: absolute;
+
+  &:nth-child(1) {
+    top: -85px;
+    right: 100px;
+
+    &:after {
+      position: absolute;
+      content: '';
+      display: inline-block;
+      width: 130px;
+      height: 7px;
+      bottom: 0;
+      left:40px;
+      background-color: limegreen;
+      transform: rotate(-55deg);
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &:nth-child(2) {
+    top: 10px;
+    right: -33px;
+
+    &:after {
+      position: absolute;
+      content: '';
+      display: inline-block;
+      width: 130px;
+      height: 7px;
+      bottom: -40px;
+      left:10px;
+      background-color: limegreen;
+      transform: rotate(-22deg);
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &:nth-child(3) {
+    top: 190px;
+    right: -100px;
+
+    &:after {
+      position: absolute;
+      content: '';
+      display: inline-block;
+      width: 130px;
+      height: 7px;
+      bottom: -80px;
+      right: -15px;
+      background-color: limegreen;
+      transform: rotate(20deg);
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &:nth-child(4) {
+    top: 380px;
+    right: -30px;
+
+    &:after {
+      position: absolute;
+      content: '';
+      display: inline-block;
+      width: 130px;
+      height: 7px;
+      bottom: -19px;
+      right: 24px;
+      background-color: limegreen;
+      transform: rotate(58deg);
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &:nth-child(5) {
+    top: 470px;
+    right: 100px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.img-shadow {
+  filter: drop-shadow(0 0 4px limegreen);
+}
