@@ -1,0 +1,11 @@
+@mixin transition($time) {
+  -webkit-transition-duration: $time;
+  -moz-transition-duration: $time;
+  -o-transition-duration: $time;
+  transition-duration: $time;
+
+  -webkit-transition-property: top, filter;
+  -moz-transition-property: top, filter;
+  -o-transition-property: top, filter;
+  transition-property: top, filter;
+}
