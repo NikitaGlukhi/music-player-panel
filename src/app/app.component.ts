@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'music-player-panel';
+
+  public showOrHidePanel(id: string) {
+    const doc = document.getElementById(id);
+
+    doc.classList.toggle('show');
+  }
 }

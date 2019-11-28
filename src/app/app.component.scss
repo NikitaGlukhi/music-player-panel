@@ -2,7 +2,13 @@
 
 .body {
   margin-top: 100px;
-  margin-left: -380px;
+  transform: translateX(-770px);
+  @include transition(.3s);
+
+  &.show {
+    @include transition(.3s);
+    transform: translateX(-380px);
+  }
 }
 
 .round {
