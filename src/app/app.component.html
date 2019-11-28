@@ -10,8 +10,9 @@
       <img src="../assets/iconfinder_icon-ios7-skipforward_211822.png" class="img-shadow" alt="/">
     </span>
 
-    <span class="icon">
-      <img src="../assets/iconfinder_icon-play_211876.png" class="img-shadow" alt="/">
+    <span class="icon" (click)="playOrPause()">
+      <img src="../assets/iconfinder_icon-play_211876.png" class="img-shadow" *ngIf="displayCondition" alt="/" id="play">
+      <img src="../assets/iconfinder_icon-ios7-pause_211791.png" class="img-shadow" *ngIf="!displayCondition" alt="/" id="pause">
     </span>
 
     <span class="icon">
