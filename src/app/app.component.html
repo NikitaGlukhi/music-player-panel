@@ -1,27 +1,59 @@
 <button class="btn" (click)="showOrHidePanel('panel')">Show panel</button>
 
-<div class="body" id="panel">
-  <div class="round-external">
+<div class="body">
+  <div class="menu" id="panel">
+    <div class="round-external">
     <span class="icon">
       <img src="../assets/iconfinder_icon-shuffle_211887.png" class="img-shadow" alt="/">
     </span>
 
-    <span class="icon">
+      <span class="icon">
       <img src="../assets/iconfinder_icon-ios7-skipforward_211822.png" class="img-shadow" alt="/">
     </span>
 
-    <span class="icon" (click)="playOrPause()">
-      <img src="../assets/iconfinder_icon-play_211876.png" class="img-shadow" *ngIf="displayCondition" alt="/" id="play">
-      <img src="../assets/iconfinder_icon-ios7-pause_211791.png" class="img-shadow" *ngIf="!displayCondition" alt="/" id="pause">
+    <span class="icon">
+      <img src="../assets/iconfinder_icon-play_211876.png" class="img-shadow" alt="/" id="play">
     </span>
 
     <span class="icon">
       <img src="../assets/iconfinder_icon-ios7-skipbackward_211820.png" class="img-shadow" alt="/">
     </span>
 
-    <span class="icon">
+      <span class="icon">
       <img src="../assets/iconfinder_icon-loop_211856.png" class="img-shadow" alt="/">
     </span>
-    <div class="round-internal"></div>
+      <div class="round-internal"></div>
+    </div>
+  </div>
+
+  <div class="music-panel">
+    <div class="panels">
+      <div class="panels-left">
+        <h2 style="color: aliceblue">Track info here</h2>
+      </div>
+      <div class="panels-right">
+        <div class="audio" *ngFor="let track of musicData.defaultSongs; let i = index">
+          <button class="player-button" (click)="play('player' + i)">
+            <span>
+              <img class="player-icon" src="../assets/iconfinder_icon-play_211876.png" alt="" />
+            </span>
+          </button>
+          <button class="player-button" (click)="pause('player' + i)">
+            <span>
+               <img class="player-icon" src="../assets/iconfinder_icon-ios7-pause_211791.png" alt="" />
+            </span>
+          </button>
+
+          <div class="audio-artist-title">
+            <h3 style="color: aliceblue">{{ track.artist.artist }}</h3>
+            <h3 style="color: aliceblue">{{ track.title }}</h3>
+          </div>
+
+          <audio [id]="'player' + i" src="{{ track.url }}"></audio>
+          <!--<button onclick="document.getElementById('player').volume+=0.1">+</button>-->
+          <!--<button onclick="document.getElementById('player').volume-=0.1">-</button>-->
+        </div>
+      </div>
+    </div>
   </div>
 </div>

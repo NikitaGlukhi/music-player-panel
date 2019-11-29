@@ -4,8 +4,8 @@
   -o-transition-duration: $time;
   transition-duration: $time;
 
-  -webkit-transition-property: top, filter, transform;
-  -moz-transition-property: top, filter, transform;
-  -o-transition-property: top, filter, transform;
-  transition-property: top, filter, transform;
+  -webkit-transition-property: top, filter, transform, background;
+  -moz-transition-property: top, filter, transform, background;
+  -o-transition-property: top, filter, transform, background;
+  transition-property: top, filter, transform, background;
 }
