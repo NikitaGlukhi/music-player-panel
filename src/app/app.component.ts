@@ -6,8 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'music-player-panel';
-  public showBtnCondition: boolean = true;
   public musicData = {
     defaultSongs: [
       {
@@ -140,17 +138,66 @@ export class AppComponent {
     doc.classList.toggle('show');
   }
 
-  public playOrPause() {
-    this.showBtnCondition = !this.showBtnCondition;
+  public panelPlay() {
+    const id = localStorage.getItem('IDX');
+
+    if (!id) {
+      alert('Please, start listen music in menu');
+    } else {
+      (document.getElementById('player' + id) as HTMLMediaElement).play();
+      document.getElementById('play' + id).style.display = 'none';
+      document.getElementById('pause' + id).style.display = 'block';
+      document.getElementById('panelPlay').style.display = 'none';
+      document.getElementById('panelPause').style.display = 'inline-block';
+    }
   }
 
-  public play(id: string) {
-    const doc = document.getElementById(id) as HTMLMediaElement;
-    doc.play();
+  public panelPause() {
+    const id = localStorage.getItem('IDX');
+    (document.getElementById('player' + id) as HTMLMediaElement).pause();
+    document.getElementById('pause' + id).style.display = 'none';
+    document.getElementById('play' + id).style.display = 'block';
+    document.getElementById('panelPause').style.display = 'none';
+    document.getElementById('panelPlay').style.display = 'inline-block';
   }
 
-  public pause(id: string) {
-    const doc = document.getElementById(id) as HTMLMediaElement;
-    doc.pause();
+  public play(idx: number) {
+    const id = `player${idx}`;
+    const playId = `play${idx}`;
+    const pauseId = `pause${idx}`;
+
+    const oldIDX = localStorage.getItem('IDX');
+
+    if (!oldIDX) {
+      localStorage.setItem('IDX', idx.toString());
+    } else if (+oldIDX !== idx) {
+      const oldId = `player${oldIDX}`;
+      const oldPlayId = `play${oldIDX}`;
+      const oldPauseId = `pause${oldIDX}`;
+
+      (document.getElementById(oldId) as HTMLMediaElement).pause();
+      document.getElementById(oldPauseId).style.display = 'none';
+      document.getElementById(oldPlayId).style.display = 'inline-block';
+
+      localStorage.setItem('IDX', idx.toString());
+    }
+
+    (document.getElementById(id) as HTMLMediaElement).play();
+    document.getElementById(playId).style.display = 'none';
+    document.getElementById(pauseId).style.display = 'inline-block';
+    document.getElementById('panelPlay').style.display = 'none';
+    document.getElementById('panelPause').style.display = 'inline-block';
+  }
+
+  public pause(idx: number) {
+    const id = `player${idx}`;
+    const playId = `play${idx}`;
+    const pauseId = `pause${idx}`;
+
+    (document.getElementById(id) as HTMLMediaElement).pause();
+    document.getElementById(pauseId).style.display = 'none';
+    document.getElementById(playId).style.display = 'inline-block';
+    document.getElementById('panelPause').style.display = 'none';
+    document.getElementById('panelPlay').style.display = 'inline-block';
   }
 }

@@ -12,7 +12,8 @@
     </span>
 
     <span class="icon">
-      <img src="../assets/iconfinder_icon-play_211876.png" class="img-shadow" alt="/" id="play">
+      <img id="panelPlay" (click)="panelPlay()" src="../assets/iconfinder_icon-play_211876.png" class="img-shadow" alt="" />
+      <img id="panelPause" (click)="panelPause()" src="../assets/iconfinder_icon-ios7-pause_211791.png" class="img-shadow" alt="" style="display: none" />
     </span>
 
     <span class="icon">
@@ -33,23 +34,21 @@
       </div>
       <div class="panels-right">
         <div class="audio" *ngFor="let track of musicData.defaultSongs; let i = index">
-          <button class="player-button" (click)="play('player' + i)">
-            <span>
-              <img class="player-icon" src="../assets/iconfinder_icon-play_211876.png" alt="" />
-            </span>
-          </button>
-          <button class="player-button" (click)="pause('player' + i)">
-            <span>
-               <img class="player-icon" src="../assets/iconfinder_icon-ios7-pause_211791.png" alt="" />
-            </span>
-          </button>
+          <span class="player-button">
+            <img [id]="'play' + i" class="player-icon" src="../assets/iconfinder_icon-play_211876.png" alt="" (click)="play(i)"/>
+          </span>
+          <span class="player-button">
+            <img [id]="'pause' + i" class="player-icon" src="../assets/iconfinder_icon-ios7-pause_211791.png" alt="" style="display: none" (click)="pause(i)" />
+          </span>
 
           <div class="audio-artist-title">
             <h3 style="color: aliceblue">{{ track.artist.artist }}</h3>
             <h3 style="color: aliceblue">{{ track.title }}</h3>
           </div>
 
-          <audio [id]="'player' + i" src="{{ track.url }}"></audio>
+          <audio [id]="'player' + i" src="{{ track.url }}">
+            <a name="defaultSongs"></a>
+          </audio>
           <!--<button onclick="document.getElementById('player').volume+=0.1">+</button>-->
           <!--<button onclick="document.getElementById('player').volume-=0.1">-</button>-->
         </div>
