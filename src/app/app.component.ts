@@ -144,11 +144,18 @@ export class AppComponent {
     if (!id) {
       alert('Please, start listen music in menu');
     } else {
-      (document.getElementById('player' + id) as HTMLMediaElement).play();
+      const audio = document.getElementById('player' + id) as HTMLMediaElement;
       document.getElementById('play' + id).style.display = 'none';
       document.getElementById('pause' + id).style.display = 'block';
       document.getElementById('panelPlay').style.display = 'none';
       document.getElementById('panelPause').style.display = 'inline-block';
+
+      audio.play();
+      audio.addEventListener('ended', () => {
+        audio.currentTime = 0;
+
+        this.panelPause();
+      });
     }
   }
 
@@ -182,11 +189,18 @@ export class AppComponent {
       localStorage.setItem('IDX', idx.toString());
     }
 
-    (document.getElementById(id) as HTMLMediaElement).play();
+    const audio = document.getElementById(id) as HTMLMediaElement;
     document.getElementById(playId).style.display = 'none';
     document.getElementById(pauseId).style.display = 'inline-block';
     document.getElementById('panelPlay').style.display = 'none';
     document.getElementById('panelPause').style.display = 'inline-block';
+
+    audio.play();
+    audio.addEventListener('ended', () => {
+      audio.currentTime = 0;
+
+      this.pause(+localStorage.getItem('IDX'));
+    });
   }
 
   public pause(idx: number) {
